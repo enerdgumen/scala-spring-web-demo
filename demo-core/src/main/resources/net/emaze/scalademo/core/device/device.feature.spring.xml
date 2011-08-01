@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="MacRoman"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="hibernateDeviceService" class="net.emaze.scalademo.core.device.HibernateDeviceService">
+        <property name="repository" ref="hibernateRepository"/>
+    </bean>
+
+    <bean id="defaultDeviceFacade" class="net.emaze.scalademo.core.device.DefaultDeviceFacade">
+        <property name="deviceService" ref="hibernateDeviceService"/>
+    </bean>
+</beans>
