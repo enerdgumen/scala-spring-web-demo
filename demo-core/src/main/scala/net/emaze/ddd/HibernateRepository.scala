@@ -1,9 +1,10 @@
-package net.emaze.scalademo.core
+package net.emaze.ddd
 
 import java.io.Serializable
 import scala.reflect.BeanProperty
 import scala.collection.JavaConversions
 import org.springframework.orm.hibernate3.HibernateOperations
+import net.emaze.contracts.dbc
 
 class HibernateRepository extends Repository {
 

@@ -1,4 +1,6 @@
-package net.emaze.scalademo.core
+package net.emaze.collections
+
+import net.emaze.contracts.dbc
 
 object Consumers {
 

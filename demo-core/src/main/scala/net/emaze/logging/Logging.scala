@@ -1,4 +1,4 @@
-package net.emaze.scalademo.core
+package net.emaze.logging
 
 import org.apache.log4j.Logger
 

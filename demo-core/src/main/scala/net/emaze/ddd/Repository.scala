@@ -1,4 +1,4 @@
-package net.emaze.scalademo.core
+package net.emaze.ddd
 
 import java.io.Serializable
 

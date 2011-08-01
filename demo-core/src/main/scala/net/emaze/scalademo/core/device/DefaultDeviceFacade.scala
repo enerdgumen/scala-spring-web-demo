@@ -2,7 +2,8 @@ package net.emaze.scalademo.core.device
 
 import scala.reflect.BeanProperty
 import org.springframework.transaction.annotation.Transactional
-import net.emaze.scalademo.core.{dbc, Logging}
+import net.emaze.logging.Logging
+import net.emaze.contracts.dbc
 
 @Transactional
 class DefaultDeviceFacade extends DeviceFacade with Logging {

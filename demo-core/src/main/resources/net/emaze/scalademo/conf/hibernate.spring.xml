@@ -32,7 +32,7 @@
         <property name="sessionFactory" ref="localSessionFactoryBean"/>
     </bean>
     
-    <bean id="hibernateRepository" class="net.emaze.scalademo.core.HibernateRepository">
+    <bean id="hibernateRepository" class="net.emaze.ddd.HibernateRepository">
         <property name="hibernateOperations" ref="hibernateTemplate"/>
     </bean>
     
