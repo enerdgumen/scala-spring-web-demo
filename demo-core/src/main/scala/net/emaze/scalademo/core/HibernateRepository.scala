@@ -11,7 +11,7 @@ class HibernateRepository extends Repository {
     var hibernateOperations: HibernateOperations = _
 
     override def merge[E <: AnyRef](entity: E) = {
-        val merged = hibernateOperations.merge(entity)
+        val merged = hibernateOperations.merge(entity).asInstanceOf[E]
         dbc.statePrecondition(merged != null, "merged entity cannot be null")
         merged
     }
@@ -23,12 +23,12 @@ class HibernateRepository extends Repository {
     }
 
     override def searchById[E <: AnyRef](clazz: Class[E], id: Serializable) = {
-        val entity = hibernateOperations.get(clazz, id)
+        val entity = hibernateOperations.get(clazz, id).asInstanceOf[E]
         if (entity == null) None else Some(entity)
     }
 
     override def findById[E <: AnyRef](clazz: Class[E], id: Serializable) = {
-        val entity = hibernateOperations.get(clazz, id)
+        val entity = hibernateOperations.get(clazz, id).asInstanceOf[E]
         dbc.statePrecondition(entity != null, "no entity %s found with id %s", clazz.getSimpleName, id)
         entity
     }

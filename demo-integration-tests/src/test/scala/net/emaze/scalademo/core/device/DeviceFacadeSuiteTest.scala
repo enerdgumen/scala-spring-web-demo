@@ -17,7 +17,7 @@ class DeviceFacadeSuiteTest {
 
     @Test
     def canCreateADevice {
-        val device: DeviceResponse = deviceFacade.create("context", "network", "192.168.1.1")
-        Assert.assertEquals("context", device.context)
+        val device: DeviceResponse = deviceFacade.create("network", "192.168.1.1")
+        Assert.assertEquals("network", device.network)
     }
 }

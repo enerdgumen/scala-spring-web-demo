@@ -6,8 +6,7 @@
         <id name="id" column="id_device">
             <generator class="native"/>
         </id> 
-        <property name="context" type="string"/> 
-        <property name="network" type="string"/> 
+        <property name="network" type="string"/>
         <property name="ipAddress" type="string"/>
     </class>
 </hibernate-mapping>
