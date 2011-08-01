@@ -20,6 +20,6 @@ class HibernateDeviceService extends DeviceService {
 
     override def findByNetworkAndIpAddress(network: String, ipAddress: String) = {
         val devices = repository.search[Device]("from Device where network = ? and ipAddress = ?", network, ipAddress)
-        Consumers.findOne(devices)
+        Consumers.one(devices)
     }
 }
