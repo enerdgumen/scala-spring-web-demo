@@ -9,6 +9,7 @@
   
     <modules>
         <module>demo-core</module>
+        <module>demo-gui</module>
         <module>demo-integration-tests</module>
     </modules>
     
