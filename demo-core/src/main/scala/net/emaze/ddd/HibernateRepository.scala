@@ -4,7 +4,6 @@ import java.io.Serializable
 import scala.reflect.BeanProperty
 import scala.collection.JavaConversions
 import org.springframework.orm.hibernate3.HibernateOperations
-import net.emaze.contracts.dbc
 
 class HibernateRepository extends Repository {
 
@@ -13,13 +12,13 @@ class HibernateRepository extends Repository {
 
     override def merge[E <: AnyRef](entity: E) = {
         val merged = hibernateOperations.merge(entity).asInstanceOf[E]
-        dbc.statePrecondition(merged != null, "merged entity cannot be null")
+        assert(merged != null, "merged entity cannot be null")
         merged
     }
 
     override def search[E <: AnyRef](query: String, args: String*) = {
         val results = hibernateOperations.find(query, args).asInstanceOf[java.util.List[E]]
-        dbc.statePrecondition(results != null, "results cannot be null")
+        assert(results != null, "results cannot be null")
         JavaConversions.asBuffer(results).toList
     }
 
@@ -30,7 +29,7 @@ class HibernateRepository extends Repository {
 
     override def findById[E <: AnyRef](clazz: Class[E], id: Serializable) = {
         val entity = hibernateOperations.get(clazz, id).asInstanceOf[E]
-        dbc.statePrecondition(entity != null, "no entity %s found with id %s", clazz.getSimpleName, id)
+        assert(entity != null, "no entity " + clazz.getSimpleName + " found with id " + id)
         entity
     }
 }
