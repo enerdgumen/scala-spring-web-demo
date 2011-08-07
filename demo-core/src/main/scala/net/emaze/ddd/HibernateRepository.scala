@@ -16,7 +16,7 @@ class HibernateRepository extends Repository {
         merged
     }
 
-    override def search[E <: AnyRef](query: String, args: String*) = {
+    override def searchAll[E <: AnyRef](query: String, args: String*) = {
         requireDependencies
         val results = hibernateOperations.find(query, args).asInstanceOf[java.util.List[E]]
         assert(results != null, "results cannot be null")
