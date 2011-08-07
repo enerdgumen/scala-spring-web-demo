@@ -5,9 +5,7 @@ object Consumers {
     def one[T](traversable: Traversable[T]): T = {
         val iterator = traversable.toIterator
         require(iterator.hasNext, "no elements to consume")
-        val item = iterator.next
-        require(!iterator.hasNext, "found too many elements")
-        item
+        iterator.next ensuring (!iterator.hasNext, "found too many elements")
     }
 
     def first[T](traversable: Traversable[T]): T = {
