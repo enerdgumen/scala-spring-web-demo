@@ -2,7 +2,6 @@ package net.emaze.scalademo.core.device
 
 import reflect.BeanProperty
 import net.emaze.ddd.Repository
-import net.emaze.collections.Consumers
 
 class HibernateDeviceService extends DeviceService {
 
@@ -19,7 +18,6 @@ class HibernateDeviceService extends DeviceService {
     }
 
     override def findByNetworkAndIpAddress(network: String, ipAddress: String) = {
-        val devices = repository.searchAll[Device]("from Device where network = ? and ipAddress = ?", network, ipAddress)
-        Consumers.one(devices)
+        repository.searchAll[Device]("from Device where network = ? and ipAddress = ?", network, ipAddress).findOne
     }
 }
