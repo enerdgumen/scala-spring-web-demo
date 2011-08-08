@@ -6,23 +6,23 @@ trait Logging {
 
     private val logger = Logger.getLogger(getClass)
 
-    protected def debug(message: String, args: String*) {
-        logger.debug(String.format(message, args: _*))
+    protected def debug(message: String) {
+        logger.debug(message)
     }
     
-    protected def info(message: String, args: String*) {
-        logger.info(String.format(message, args: _*))
+    protected def info(message: String) {
+        logger.info(message)
     }
 
-    protected def warning(message: String, args: String*) {
-        logger.warn(String.format(message, args: _*))
+    protected def warning(message: String) {
+        logger.warn(message)
     }
 
-    protected def error(message: String, args: String*) {
-        logger.error(String.format(message, args: _*))
+    protected def error(message: String) {
+        logger.error(message)
     }
 
-    protected def fatal(message: String, args: String*) {
-        logger.fatal(String.format(message, args: _*))
+    protected def fatal(message: String) {
+        logger.fatal(message)
     }
 }

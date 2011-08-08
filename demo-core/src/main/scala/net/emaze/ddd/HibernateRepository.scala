@@ -28,7 +28,7 @@ class HibernateRepository extends Repository {
 
     override def findById[E <: AnyRef](clazz: Class[E], id: Serializable) = {
         requireHibernate
-        hibernateOperations.get(clazz, id).asInstanceOf[E] ensuring (_ != null, "no entity " + clazz.getSimpleName + " found with id " + id)
+        hibernateOperations.get(clazz, id).asInstanceOf[E] ensuring (_ != null, "no entity %s found with id %s" format (clazz.getSimpleName, id))
     }
 
     private def requireHibernate {
