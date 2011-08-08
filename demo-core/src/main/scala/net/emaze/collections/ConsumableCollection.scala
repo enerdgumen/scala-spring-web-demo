@@ -1,7 +1,7 @@
 package net.emaze.collections
 
 
-class ConstrainedCollection[T](val traversable: Traversable[T]) {
+class ConsumableCollection[T](val traversable: Traversable[T]) {
 
     def findOne: T = {
         val iterator = traversable.toIterator
