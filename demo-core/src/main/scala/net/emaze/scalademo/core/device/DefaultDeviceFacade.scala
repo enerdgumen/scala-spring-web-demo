@@ -3,7 +3,7 @@ package net.emaze.scalademo.core.device
 import scala.reflect.BeanProperty
 import org.springframework.transaction.annotation.Transactional
 import net.emaze.logging.Logging
-import net.emaze.strings
+import net.emaze.addons.strings
 
 @Transactional
 class DefaultDeviceFacade extends DeviceFacade with Logging {

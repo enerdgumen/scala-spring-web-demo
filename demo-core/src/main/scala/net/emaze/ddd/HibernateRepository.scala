@@ -4,7 +4,7 @@ import java.io.Serializable
 import scala.reflect.BeanProperty
 import scala.collection.JavaConversions
 import org.springframework.orm.hibernate3.HibernateOperations
-import net.emaze.strings
+import net.emaze.addons.strings
 
 class HibernateRepository extends Repository {
 

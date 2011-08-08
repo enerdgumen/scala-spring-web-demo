@@ -1,5 +1,4 @@
-package net.emaze.collections
-
+package net.emaze.addons
 
 class ConsumableCollection[T](val traversable: Traversable[T]) {
 

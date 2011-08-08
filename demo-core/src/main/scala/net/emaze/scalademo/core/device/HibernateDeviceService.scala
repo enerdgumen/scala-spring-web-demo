@@ -2,7 +2,7 @@ package net.emaze.scalademo.core.device
 
 import reflect.BeanProperty
 import net.emaze.ddd.Repository
-import net.emaze.consumers
+import net.emaze.addons.consumers
 
 class HibernateDeviceService extends DeviceService {
 
