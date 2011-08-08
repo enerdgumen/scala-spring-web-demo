@@ -3,6 +3,7 @@ package net.emaze.scalademo.core.device
 import scala.reflect.BeanProperty
 import org.springframework.transaction.annotation.Transactional
 import net.emaze.logging.Logging
+import net.emaze.strings
 
 @Transactional
 class DefaultDeviceFacade extends DeviceFacade with Logging {
@@ -11,7 +12,7 @@ class DefaultDeviceFacade extends DeviceFacade with Logging {
     var deviceService: DeviceService = _
 
     override def create(network: String, ipAddress: String) = {
-        info(".create(network=%s, ipAddress=%s)" format (network, ipAddress))
+        info(".create(network=%s, ipAddress=%s)" % (network, ipAddress))
         require(network != null, "network cannot be null")
         require(ipAddress != null, "ipAddress cannot be null")
 

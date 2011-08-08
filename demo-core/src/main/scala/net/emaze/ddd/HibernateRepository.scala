@@ -4,6 +4,7 @@ import java.io.Serializable
 import scala.reflect.BeanProperty
 import scala.collection.JavaConversions
 import org.springframework.orm.hibernate3.HibernateOperations
+import net.emaze.strings
 
 class HibernateRepository extends Repository {
 
@@ -28,10 +29,10 @@ class HibernateRepository extends Repository {
 
     override def findById[E <: AnyRef](clazz: Class[E], id: Serializable) = {
         requireHibernate
-        hibernateOperations.get(clazz, id).asInstanceOf[E] ensuring (_ != null, "no entity %s found with id %s" format (clazz.getSimpleName, id))
+        hibernateOperations.get(clazz, id).asInstanceOf[E] ensuring (_ != null, "no entity %s found with id %s" % (clazz.getSimpleName, id))
     }
 
     private def requireHibernate {
-        require(hibernateOperations != null, "hibernateOperations doesn't injected into object of type " + getClass.getName)
+        require(hibernateOperations != null, "hibernateOperations doesn't injected into %s object" % getClass.getName)
     }
 }
