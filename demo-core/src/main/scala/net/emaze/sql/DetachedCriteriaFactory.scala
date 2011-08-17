@@ -1,6 +1,6 @@
 package net.emaze.sql
 
-import org.hibernate.criterion.{Restrictions, Criterion, DetachedCriteria}
+import org.hibernate.criterion.DetachedCriteria
 
 object DetachedCriteriaFactory {
 
@@ -9,10 +9,6 @@ object DetachedCriteriaFactory {
     }
 
     implicit def apply(restrictedDomain: RestrictedDomain): DetachedCriteria = {
-        apply(restrictedDomain.domain).add(toCriterion(restrictedDomain.restriction))
-    }
-
-    private def toCriterion: Restriction => Criterion = {
-        case Eq(field, value) => Restrictions.eq(field, value)
+        apply(restrictedDomain.domain).add(CriterionFactory(restrictedDomain.restriction))
     }
 }

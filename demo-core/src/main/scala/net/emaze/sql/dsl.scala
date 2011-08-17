@@ -19,11 +19,17 @@ class Domain(val table: String) {
 class RestrictedDomain(val domain: Domain, val restriction: Restriction)
 
 sealed abstract class Restriction
+case class IdEq(value: Any) extends Restriction
 case class Eq(field: String, value: Any) extends Restriction
 
 class Field(field: String) {
 
     def ===(value: Any) = Eq(field, value)
+}
+
+object ID {
+
+    def ===(value: Any) = IdEq(value)
 }
 
 object Conversion {

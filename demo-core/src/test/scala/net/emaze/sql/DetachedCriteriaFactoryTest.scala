@@ -5,7 +5,7 @@ import org.hibernate.criterion.{Restrictions, DetachedCriteria}
 import net.emaze.sql.Conversion._
 import net.emaze.sql.DetachedCriteriaFactory._
 
-class SqlBuilderTest {
+class DetachedCriteriaFactoryTest {
 
     @Test
     def canDoSelectAllFromATable {
