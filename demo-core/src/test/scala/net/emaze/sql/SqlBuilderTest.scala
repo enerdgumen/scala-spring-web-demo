@@ -1,8 +1,9 @@
 package net.emaze.sql
 
 import org.junit.{Test, Assert}
-import net.emaze.sql.Conversion._
 import org.hibernate.criterion.{Restrictions, DetachedCriteria}
+import net.emaze.sql.Conversion._
+import net.emaze.sql.DetachedCriteriaFactory._
 
 class SqlBuilderTest {
 
