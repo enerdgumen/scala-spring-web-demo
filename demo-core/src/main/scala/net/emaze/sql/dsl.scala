@@ -21,10 +21,18 @@ class RestrictedDomain(val domain: Domain, val restriction: Restriction)
 sealed abstract class Restriction
 case class IdEq(value: Any) extends Restriction
 case class Eq(field: String, value: Any) extends Restriction
+case class NotEq(field: String, value: Any) extends Restriction
+case class Like(field: String, value: String) extends Restriction
+case class ILike(field: String, value: String) extends Restriction
+case class GreaterThen(field: String, value: Any) extends Restriction
 
-class Field(field: String) {
+class Field(name: String) {
 
-    def ===(value: Any) = Eq(field, value)
+    def ===(value: Any) = Eq(name, value)
+    def !==(value: Any) = NotEq(name, value)
+    def LIKE(value: String) = Like(name, value)
+    def ILIKE(value: String) = ILike(name, value)
+    def >(value: Any) = GreaterThen(name, value)
 }
 
 object ID {
@@ -34,5 +42,5 @@ object ID {
 
 object Conversion {
     
-    implicit def toField(field: String) = new Field(field)
+    implicit def field(name: String) = new Field(name)
 }
