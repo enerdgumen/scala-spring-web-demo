@@ -47,4 +47,11 @@ class CriterionFactoryTest {
         val got = CriterionFactory(field("field") > 2)
         Assert.assertEquals(expected.toString, got.toString)
     }
+
+    @Test
+    def canBuildAnAndCompositeCriterion {
+        val expected = Restrictions.and(Restrictions.eq("a", 1), Restrictions.eq("b", 2))
+        val got = CriterionFactory("a" === 1 && "b" === 2)
+        Assert.assertEquals(expected.toString, got.toString)
+    }
 }

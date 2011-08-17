@@ -11,5 +11,6 @@ object CriterionFactory {
         case Like(field, value) => Restrictions.like(field, value)
         case ILike(field, value) => Restrictions.ilike(field, value)
         case GreaterThen(field, value) => Restrictions.gt(field, value)
+        case And(lhs, rhs) => Restrictions.and(apply(lhs), apply(rhs))
     }
 }

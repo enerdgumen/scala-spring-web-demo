@@ -18,13 +18,18 @@ class Domain(val table: String) {
 
 class RestrictedDomain(val domain: Domain, val restriction: Restriction)
 
-sealed abstract class Restriction
+sealed abstract class Restriction {
+
+    def &&(rhs: Restriction) = And(this, rhs)
+}
+
 case class IdEq(value: Any) extends Restriction
 case class Eq(field: String, value: Any) extends Restriction
 case class NotEq(field: String, value: Any) extends Restriction
 case class Like(field: String, value: String) extends Restriction
 case class ILike(field: String, value: String) extends Restriction
 case class GreaterThen(field: String, value: Any) extends Restriction
+case class And(lhs: Restriction, rhs: Restriction) extends Restriction
 
 class Field(name: String) {
 
