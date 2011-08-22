@@ -22,6 +22,6 @@ class HibernateDeviceService extends DeviceService {
     }
 
     override def findByNetworkAndIpAddress(network: String, ipAddress: String) = {
-        (SELECT (*) FROM "Device" WHERE "network" === network && "ipAddress" === ipAddress).asList[Device].findOne
-    }
+        SELECT (*) FROM "Device" WHERE "network" === network && "ipAddress" === ipAddress
+    }.asList[Device].findOne
 }
