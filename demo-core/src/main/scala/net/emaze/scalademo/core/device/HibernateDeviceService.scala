@@ -3,9 +3,10 @@ package net.emaze.scalademo.core.device
 import reflect.BeanProperty
 import net.emaze.ddd.Repository
 import net.emaze.addons.consumers
-import net.emaze.sql._
-import net.emaze.sql.Conversion.field
-import net.emaze.sql.DetachedCriteriaFactory._
+import net.emaze.sql.dsl._
+import net.emaze.sql.dsl.Conversion.field
+import net.emaze.sql.hibernate.DetachedCriteriaFactory._
+import net.emaze.sql.hibernate.RichDetachedCriteria._
 
 class HibernateDeviceService extends DeviceService {
 
@@ -21,7 +22,6 @@ class HibernateDeviceService extends DeviceService {
     }
 
     override def findByNetworkAndIpAddress(network: String, ipAddress: String) = {
-        var devices: List[Device] = SELECT (*) FROM "Device" WHERE "network" === network && "ipAddress" === ipAddress
-        devices.findOne
+        (SELECT (*) FROM "Device" WHERE "network" === network && "ipAddress" === ipAddress).asList[Device].findOne
     }
 }

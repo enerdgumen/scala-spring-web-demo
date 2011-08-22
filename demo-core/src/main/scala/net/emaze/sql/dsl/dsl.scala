@@ -1,4 +1,4 @@
-package net.emaze.sql
+package net.emaze.sql.dsl
 
 object SELECT {
 

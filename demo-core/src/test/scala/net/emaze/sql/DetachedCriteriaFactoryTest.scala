@@ -2,8 +2,9 @@ package net.emaze.sql
 
 import org.junit.{Test, Assert}
 import org.hibernate.criterion.{Restrictions, DetachedCriteria}
-import net.emaze.sql.Conversion._
-import net.emaze.sql.DetachedCriteriaFactory._
+import net.emaze.sql.dsl._
+import net.emaze.sql.dsl.Conversion._
+import net.emaze.sql.hibernate.DetachedCriteriaFactory._
 
 class DetachedCriteriaFactoryTest {
 

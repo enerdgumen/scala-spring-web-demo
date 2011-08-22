@@ -1,5 +1,6 @@
-package net.emaze.sql
+package net.emaze.sql.hibernate
 
+import net.emaze.sql.dsl._
 import org.hibernate.criterion.{Restrictions, Criterion}
 
 object CriterionFactory {

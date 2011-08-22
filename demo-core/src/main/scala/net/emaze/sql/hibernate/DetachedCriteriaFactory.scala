@@ -1,7 +1,8 @@
-package net.emaze.sql
+package net.emaze.sql.hibernate
 
 import org.hibernate.criterion.DetachedCriteria
 import net.emaze.ddd.Repository
+import net.emaze.sql.dsl.{RestrictedDomain, Domain}
 
 object DetachedCriteriaFactory {
 

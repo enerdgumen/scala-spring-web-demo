@@ -2,7 +2,9 @@ package net.emaze.sql
 
 import org.junit.{Test, Assert}
 import org.hibernate.criterion.Restrictions
-import net.emaze.sql.Conversion.field
+import net.emaze.sql.dsl.Conversion.field
+import net.emaze.sql.dsl.ID
+import net.emaze.sql.hibernate.CriterionFactory
 
 class CriterionFactoryTest {
 
