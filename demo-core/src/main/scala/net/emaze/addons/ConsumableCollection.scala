@@ -1,6 +1,6 @@
 package net.emaze.addons
 
-class ConsumableCollection[T](val traversable: Traversable[T]) {
+class ConsumableCollection[T](traversable: Traversable[T]) {
 
     def findOne: T = {
         val iterator = traversable.toIterator
