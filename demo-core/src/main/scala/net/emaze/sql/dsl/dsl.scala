@@ -2,14 +2,8 @@ package net.emaze.sql.dsl
 
 object SELECT {
 
-    def apply(domain: WithDomain) = domain
-}
-
-trait WithDomain {
-
     def FROM(table: String) = new Domain(table)
 }
-object * extends WithDomain
 
 class Domain(val table: String) {
 
@@ -21,6 +15,7 @@ class RestrictedDomain(val domain: Domain, val restriction: Restriction)
 sealed abstract class Restriction {
 
     def &&(rhs: Restriction) = And(this, rhs)
+    // TODO: ...
 }
 
 case class IdEq(value: Any) extends Restriction
@@ -30,6 +25,12 @@ case class Like(field: String, value: String) extends Restriction
 case class ILike(field: String, value: String) extends Restriction
 case class GreaterThen(field: String, value: Any) extends Restriction
 case class And(lhs: Restriction, rhs: Restriction) extends Restriction
+// TODO: ...
+
+object ID {
+
+    def ===(value: Any) = IdEq(value)
+}
 
 class Field(name: String) {
 
@@ -38,11 +39,7 @@ class Field(name: String) {
     def LIKE(value: String) = Like(name, value)
     def ILIKE(value: String) = ILike(name, value)
     def >(value: Any) = GreaterThen(name, value)
-}
-
-object ID {
-
-    def ===(value: Any) = IdEq(value)
+    // TODO: ...
 }
 
 object Conversion {

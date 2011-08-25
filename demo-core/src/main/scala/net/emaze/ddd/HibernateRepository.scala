@@ -12,34 +12,25 @@ class HibernateRepository extends Repository {
     @BeanProperty var hibernateOperations: HibernateOperations = _
 
     override def merge[E <: AnyRef](entity: E): E = {
-        requireHibernate
         hibernateOperations.merge(entity).asInstanceOf[E] ensuring (_ != null, "merged entity cannot be null")
     }
 
     override def searchAll[E <: AnyRef](query: String, args: String*): List[E] = {
-        requireHibernate
         val results = hibernateOperations.find(query, args).asInstanceOf[java.util.List[E]] ensuring (_ != null, "results cannot be null")
         JavaConversions.asBuffer(results).toList
     }
 
     override def searchAll[E <: AnyRef](detachedCriteria: DetachedCriteria): List[E] = {
-        requireHibernate
         val results = hibernateOperations.findByCriteria(detachedCriteria).asInstanceOf[java.util.List[E]] ensuring (_ != null, "results cannot be null")
         JavaConversions.asBuffer(results).toList
     }
 
     override def searchById[E <: AnyRef](clazz: Class[E], id: Serializable): Option[E] = {
-        requireHibernate
         val entity = hibernateOperations.get(clazz, id).asInstanceOf[E]
         if (entity == null) None else Some(entity)
     }
 
     override def findById[E <: AnyRef](clazz: Class[E], id: Serializable): E = {
-        requireHibernate
         hibernateOperations.get(clazz, id).asInstanceOf[E] ensuring (_ != null, "no entity %s found with id %s" % (clazz.getSimpleName, id))
-    }
-
-    private def requireHibernate {
-        require(hibernateOperations != null, "hibernateOperations doesn't injected into %s object" % getClass.getName)
     }
 }

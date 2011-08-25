@@ -32,17 +32,14 @@ class ConsumableCollection[T](val traversable: Traversable[T]) {
     }
 
     @inline
-    def searchFirst: Option[T] = {
+    def searchFirst: Option[T] =
         traversable.headOption
-    }
 
     @inline
-    def searchLast: Option[T] = {
+    def searchLast: Option[T] =
         traversable.lastOption
-    }
 
     @inline
-    def searchAll: List[T] = {
+    def searchAll: List[T] =
         traversable.toList
-    }
 }
